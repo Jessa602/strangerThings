@@ -1,8 +1,9 @@
 import { fetchPosts as fetchAllPosts } from "./helper.jsx";
+import {} from "./SinglePost.jsx";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function AllPost() {
+export default function AllPost({ setPostById }) {
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -11,12 +12,12 @@ export default function AllPost() {
 
   useEffect(() => {
     try {
-      const fetchPostsData = async () => {
-        const postsData = await fetchAllPosts();
-        setPosts(postsData);
+      const fetchPostsResults = async () => {
+        const postsResults = await fetchAllPosts();
+        setPosts(postsResults);
         setLoading(false);
       };
-      fetchPostsData();
+      fetchPostsResults();
     } catch (error) {
       console.error(error);
       setError(true);
@@ -58,6 +59,8 @@ export default function AllPost() {
                   </Link>
                   <p>{post.description}</p>
                   <p>Price: {post.price}</p>
+                  <p> Post ID: {post.id}</p>
+                  <p>Location: {post.location}</p>
                   <p>Seller: {post.author.username}</p>
                 </div>
               );
