@@ -11,12 +11,14 @@ export async function fetchPosts() {
   }
 }
 
-export async function fetchPostById(postId) {
+export async function fetchPostById(POST_ID) {
   try {
-    const response = await fetch(`${BASE_URL}/posts/${postId}`);
+    const response = await fetch(`${BASE_URL}/posts/${POST_ID}`);
     const { data } = await response.json();
     return data.post;
   } catch (error) {
     console.error(error);
   }
 }
+
+export { BASE_URL };

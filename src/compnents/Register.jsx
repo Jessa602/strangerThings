@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Base_URL } from "../helper.jsx";
+import { BASE_URL } from "./helper.jsx";
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -9,7 +9,7 @@ export default function Register() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await fetch(`${Base_URL}/users/register`, {
+      const response = await fetch(`${BASE_URL}/users/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
